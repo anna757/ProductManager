@@ -29,6 +29,7 @@ The stack is going to be React.js with Material UI for faster development.
 - **Features**:
   - Users can edit existing products
   - Product images can be enlarged by clicking on them, opening a modal.
+  - There is a button to go back to the list of products
 
 ### 4. Product Form
 - **Description**: Allows adding new products or editing existing ones.
