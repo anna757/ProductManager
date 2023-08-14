@@ -1,0 +1,159 @@
+/*Container should be a flex container with column direction*/
+.product-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    max-width: 100%;
+}
+
+.product-list--toolbar {
+    width: 60rem;
+    max-width: 80%;
+    margin-top: 2rem;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex; 
+    justify-content: space-between; 
+}
+
+/* Search Bar Styles */
+.MuiOutlinedInput-input {
+    font-size: 0.875rem;
+    padding: 8px;
+    width: 100%;
+    border-bottom: 0px;
+    @media (min-width: 960px) {
+      width: 200px;
+      font-size: 0.5rem;
+    }
+
+}
+
+.product-list--table {
+    width: 60rem;
+    max-width: 80%;
+    margin-bottom: 5rem;
+    background-color: #f2f2f2;
+}
+
+.product-list--tcontainer {
+    max-width: 100%;
+}
+
+.product-list--title {
+    margin-top: 5rem;
+    text-align: center;
+    color: #333;
+}
+
+.product-list--table th,
+.product-list--table td {
+    border-right: 1px solid #ddd;
+    padding: 0.4rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+.product-list--table td {
+    font-size: 1.2rem;
+}
+
+.product-list--image {
+    margin: auto;
+    width: 75px;
+    height: 75px;
+}
+
+/*Buttons should have similar general design*/
+.product-list--view,
+.product-list--delete,
+.product-list--add {
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.product-list--add {
+    background-color: var(--button-add);
+}
+
+.product-list--add:hover {
+    background-color: var(--button-add--hover);
+}
+
+.product-list--view {
+    background-color: var(--button-view);
+    margin-right: 10px;
+}
+
+.product-list--view:hover {
+    background-color: var(--button-view--hover);
+}
+
+.product-list--delete {
+    background-color: var(--button-delete);
+}
+
+.product-list--delete:hover {
+    background-color: var(--button-delete--hover);
+}
+
+@media screen and (max-width: 865px) {
+
+    .product-list--view,
+    .product-list--delete,
+    .product-list--add {
+        padding: 6px;
+        font-size: small;
+    }
+
+    .product-list--table th {
+        padding: 0.5rem;
+        font-size: 2rem !important;
+    }
+
+    .product-list--label {
+        font-size: 1rem;
+    }
+
+    .product-list--table td {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .product-list--view,
+    .product-list--delete,
+    .product-list--add {
+        font-size: xx-small;
+        padding: 4px;
+    }
+
+    .product-list--icon {
+        font-size: 0.7rem;
+    }
+
+    .product-list--table th {
+        padding: 0.5rem;
+    }
+
+    .product-list--label {
+        font-size: 0.6rem;
+    }
+
+    .product-list--table td {
+        font-size: 0.55rem;
+    }
+
+    .product-list--image {
+        margin: auto;
+        width: 50px;
+        height: 50px;
+    }
+
+}
+

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +9,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body::-webkit-scrollbar {
+  width: 7px;
+  background-color: #F5F5F5;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(119, 119, 119, 0.6);
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(85, 85, 85, 0.8); 
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+:root {
+  --button-add: #007bff;
+  --button-add--hover: #0056b3;
+  --button-delete:#dc3545;
+  --button-delete--hover: #a81f2d;
+  --button-view: #28a745;
+  --button-view--hover: #218838;
 }
