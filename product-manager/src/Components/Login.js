@@ -51,7 +51,8 @@ const Login = () => {
                     error={errorMessage !== ''}
                     onChange={(e) => setPassword(e.target.value)} />
                 {errorMessage !== '' ?
-                    <Typography sx={{ mt: 2 }} variant=" subtitle1" color="error"> {errorMessage}</Typography> : <></>}
+                    <Typography variant=" subtitle1" color="error"> {errorMessage} </Typography>
+                    : <></>}
                 <Button className="login--submit"
                     sx={{ mt: 3, py: 1.5, px: 2 }}
                     align="center"
