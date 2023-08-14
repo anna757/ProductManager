@@ -1,0 +1,54 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../public/background.jpeg');
+    background-size: cover;
+}
+
+.login--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(50, 50, 50, 0.605);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.login--input {
+    margin-top: 10px;
+    padding-top: 5px;
+    border-radius: 1px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    color: #333;
+}
+
+/* Styling the mui textfields borders*/
+.MuiInputBase-input {
+    border-bottom: 1px solid #ff9a71;
+}
+
+.MuiInputBase-input:focus {
+    border-bottom: 1px solid #79b6f5;
+}
+
+.login--submit {
+    color: white;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-image: linear-gradient(to bottom right, #ffa89e, #79b6f5);
+}
+
+.login--submit:hover {
+    background-image: linear-gradient(to bottom right, #ff9a8f, #6bb3fb);
+}
+
+.MuiInputLabel-root {
+    color: #333;
+}
+

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Button, Typography, TextField, Box, Container } from '@mui/material'
-
+import { Button, Typography, TextField, Box } from '@mui/material'
+import '../Styles/Login.css'
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setError] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username,password);
+        console.log(username, password);
         if (username === 'admin' && password === 'adminPW') {
             localStorage.setItem('isLoggedIn', 'true');
             window.location.href = '/products';
@@ -17,53 +17,51 @@ const Login = () => {
         }
     }
     return (
-        <Container
-            component="main"
-            maxWidth="xs" >
-            <Box
+        <Box className="login" component="main">
+            <Box className="login--container"
                 component="form"
                 onSubmit={handleSubmit}
                 sx={{
                     width: 350,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: 'center',
-                    mt: 20,
                     p: 5,
-                    border: "1px solid",
-                    borderRadius: 3
-                }}>
-                <Typography variant="h5" align="center">Sign in to NeuraCanvas</Typography>
-                <TextField
-                    sx={{ mt: 3, pt: 1 }}
+                    borderRadius: 5
+                }}
+            >
+                <Typography
+                    sx={{ color: '#333', mb: 2 }}
+                    variant="h5"
+                    align="center">Sign in to Product Manager</Typography>
+                <TextField className="login--input"
                     label="username"
                     variant="standard"
                     required
                     fullWidth
                     autoFocus
+                    InputProps={{ disableUnderline: true }}
                     error={errorMessage !== ''}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <TextField
-                    sx={{ mt: 3, pt: 1}}
+                <TextField className="login--input"
                     label="password"
+                    type="password"
                     variant="standard"
                     required
                     fullWidth
+                    InputProps={{ disableUnderline: true }}
                     error={errorMessage !== ''}
                     onChange={(e) => setPassword(e.target.value)} />
                 {errorMessage !== '' ?
-                 <Typography sx={{mt: 2}}variant=" subtitle1" color="error"> {errorMessage}</Typography>: <></>}
-                <Button
-                    sx={{ mt: 3, py: 1.5, px: 2}}
+                    <Typography sx={{ mt: 2 }} variant=" subtitle1" color="error"> {errorMessage}</Typography> : <></>}
+                <Button className="login--submit"
+                    sx={{ mt: 3, py: 1.5, px: 2 }}
                     align="center"
                     type="submit"
                     variant="standard"
-                    color="blue">
+                    color="primary">
                     Sign in
                 </Button>
             </Box>
-        </Container>
+        </Box>
     );
 }
 
