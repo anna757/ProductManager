@@ -96,7 +96,7 @@ const ProductList = () => {
                                 })}
                         </TableBody>
                     </Table>
-                    <ProductListPagination products={products} />
+                    <ProductListPagination products={filteredProducts} />
                 </TableContainer>
             </Paper>
         </Box>
