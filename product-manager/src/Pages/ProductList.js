@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useProducts, useSearch, usePagination } from '../ProductContext';
 import ProductListPagination from '../Components/ProductListPagination'
-import TitleAndToolbar  from '../Components/TitileAndToolbar';
+import TitleAndToolbar from '../Components/TitileAndToolbar';
 
 // MUI and MUI Icon imports
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -11,8 +11,8 @@ import {
     Paper, Typography, Avatar, TableContainer, IconButton
 } from '@mui/material'
 
+// Styles
 import '../Styles/ProductList.css'
-
 
 const columns = [
     { id: 'name', label: 'Name', minWidth: 150 },
@@ -26,7 +26,7 @@ const ProductList = () => {
     const { products, deleteProduct } = useProducts();
     const { page, rowsPerPage } = usePagination();
     const { search } = useSearch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(search.toLowerCase())
@@ -74,7 +74,8 @@ const ProductList = () => {
                                                     variant='rounded'
                                                     alt={product.alt}
                                                     src={product.src}
-                                                    className='product-list--image' />
+                                                    className='product-list--image'
+                                                />
                                             </TableCell>
                                             <TableCell>
                                                 <IconButton

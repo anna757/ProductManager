@@ -4,6 +4,9 @@ import productList from './data/products.json';
 const ProductContext = createContext()
 
 const ProductProvider = ({ children }) => {
+    // Image Modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // Search states
     const [search, setSearch] = useState('');
 
@@ -39,7 +42,8 @@ const ProductProvider = ({ children }) => {
             deleteProduct,
             page, setPage,
             rowsPerPage, setRowsPerPage,
-            search, setSearch }}>
+            search, setSearch,
+            isModalOpen, setIsModalOpen }}>
             {children}
         </ProductContext.Provider>
     )
@@ -51,5 +55,13 @@ const usePagination = () => useContext(ProductContext);
 
 const useSearch = () => useContext(ProductContext);
 
+const useImageModal = () => useContext(ProductContext);
 
-export { ProductContext, ProductProvider, useProducts, usePagination, useSearch }
+export { 
+    ProductContext, 
+    ProductProvider, 
+    useProducts, 
+    usePagination, 
+    useSearch, 
+    useImageModal 
+}

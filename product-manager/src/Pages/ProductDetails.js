@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'
-import { useProducts } from '../ProductContext';
+import { useProducts, useImageModal } from '../ProductContext';
+import ImageModal from '../Components/ImageModal';
 import { Typography, Container, Box, Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -10,12 +11,14 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
     const { products } = useProducts();
     const { id } = useParams();
+    const { setIsModalOpen} = useImageModal();
 
     useEffect(() => {
         const product = products.find(product => product.id === parseInt(id))
         setProduct(product);
     }, [id, products])
 
+    const handleModalOpen = () => setIsModalOpen(true);
 
     return product ? (
         <Container className='product-details'>
@@ -26,7 +29,13 @@ const ProductDetails = () => {
                 className='product-details--image'
                 component='img'
                 alt={product.alt}
-                src={product.src} />
+                src={product.src}
+                onClick={() => handleModalOpen()} 
+            />
+            <ImageModal 
+                alt={product.alt}
+                src={product.src}
+            />
             <Box className='product-details--button-container'>
                 <Button
                     id='product-details--edit'
