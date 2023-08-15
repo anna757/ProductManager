@@ -1,0 +1,44 @@
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    color: #333;
+    margin-top: 5%;
+}
+
+.product-details--image {
+    border-radius: 10px;
+    max-width: 65%;
+    max-height: 70vh;
+    margin: 1rem 0;
+}
+
+.product-details--button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 65%;
+}
+
+.product-details--button {
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 5px;
+    color: #fff;
+}
+
+#product-details--edit {
+    background-color: #007bff;
+
+}
+#product-details--edit:hover {
+    background-color: #0056b3;
+}
+#product-details--back {
+    background-color: #6c757d
+}
+#product-details--back:hover {
+    background-color: #5a6268
+}

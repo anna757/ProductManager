@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { Button, Typography, TextField, Box } from '@mui/material'
 import '../Styles/Login.css'
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setError] = useState('')
+    const [errorMessage, setError] = useState('');
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password);
@@ -16,49 +17,53 @@ const Login = () => {
             setError('Wrong username or password!');
         }
     }
+
     return (
-        <Box className="login" component="main">
-            <Box className="login--container"
-                component="form"
+        <Box className='login' component='main'>
+            <Box className='login--container'
+                component='form'
                 onSubmit={handleSubmit}
                 sx={{
                     width: 350,
                     p: 5,
                     borderRadius: 5
-                }}
-            >
+                }} >
                 <Typography
                     sx={{ color: '#333', mb: 2 }}
-                    variant="h5"
-                    align="center">Sign in to Product Manager</Typography>
-                <TextField className="login--input"
-                    label="username"
-                    variant="standard"
+                    variant='h5'
+                    align='center'>Sign in to Product Manager
+                </Typography>
+                <TextField className='login--input'
+                    label='username'
+                    variant='standard'
                     required
                     fullWidth
                     autoFocus
                     InputProps={{ disableUnderline: true }}
                     error={errorMessage !== ''}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <TextField className="login--input"
-                    label="password"
-                    type="password"
-                    variant="standard"
+                    onChange={(e) => setUsername(e.target.value)} />
+                <TextField className='login--input'
+                    label='password'
+                    type='password'
+                    variant='standard'
                     required
                     fullWidth
                     InputProps={{ disableUnderline: true }}
                     error={errorMessage !== ''}
                     onChange={(e) => setPassword(e.target.value)} />
                 {errorMessage !== '' ?
-                    <Typography variant=" subtitle1" color="error"> {errorMessage} </Typography>
-                    : <></>}
-                <Button className="login--submit"
+                    <Typography variant=' subtitle1'
+                        color='error'>
+                        {errorMessage}
+                    </Typography>
+                    : <></>
+                }
+                <Button className='login--submit'
                     sx={{ mt: 3, py: 1.5, px: 2 }}
-                    align="center"
-                    type="submit"
-                    variant="standard"
-                    color="primary">
+                    align='center'
+                    type='submit'
+                    variant='standard'
+                    color='primary'>
                     Sign in
                 </Button>
             </Box>
