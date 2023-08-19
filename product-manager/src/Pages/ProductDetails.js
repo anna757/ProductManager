@@ -29,12 +29,12 @@ const ProductDetails = () => {
                 className='product-details--image'
                 component='img'
                 alt={product.alt}
-                src={product.src}
+                src={product.image}
                 onClick={() => handleModalOpen()} 
             />
             <ImageModal 
                 alt={product.alt}
-                src={product.src}
+                src={product.image}
             />
             <Box className='product-details--button-container'>
                 <Button

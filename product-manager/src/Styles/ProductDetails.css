@@ -31,12 +31,12 @@
 }
 
 #product-details--edit {
-    background-color: #007bff;
+    background-color: var(--button-edit)
 
 }
 
 #product-details--edit:hover {
-    background-color: #0056b3;
+    background-color: var(--button-edit--hover)
 }
 
 #product-details--back {

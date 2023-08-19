@@ -39,4 +39,6 @@ body {
   --button-delete--hover: #a81f2d;
   --button-view: #28a745;
   --button-view--hover: #218838;
+  --button-edit: #007bff;
+  --button-edit--hover: #0056b3;
 }

@@ -8,7 +8,6 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password);
         if (username === 'admin' && password === 'adminPW') {
             localStorage.setItem('isLoggedIn', 'true');
             window.location.href = '/products';
@@ -50,14 +49,8 @@ const Login = () => {
                     fullWidth
                     InputProps={{ disableUnderline: true }}
                     error={errorMessage !== ''}
+                    helperText = {errorMessage}
                     onChange={(e) => setPassword(e.target.value)} />
-                {errorMessage !== '' ?
-                    <Typography variant=' subtitle1'
-                        color='error'>
-                        {errorMessage}
-                    </Typography>
-                    : <></>
-                }
                 <Button className='login--submit'
                     sx={{ mt: 3, py: 1.5, px: 2 }}
                     align='center'
