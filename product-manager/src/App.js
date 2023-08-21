@@ -6,6 +6,11 @@ import ProductList from './Pages/ProductList'
 import { ProductProvider } from './ProductContext';
 import { StyledEngineProvider as StyleProvider } from '@mui/material/styles';
 
+/**
+ * Renders a product manager 
+ * Style provider to override default mui styles with css
+ * Product provider contains the states and context of the app
+ */
 const App = () => {
   return (
     <StyleProvider injectFirst>

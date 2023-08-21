@@ -1,10 +1,16 @@
-import { Typography, Button, Box, TextField, InputAdornment } from '@mui/material'
 import { useSearch } from '../ProductContext';
 import { useNavigate } from 'react-router-dom'
+import { Typography, Button, Box, TextField, InputAdornment } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 
-
+/**
+ * Renders a title and toolbar component
+ * This component is above the product list
+ * It includes a search bar and a button to add a new product
+ * The button navigates to the add product page
+ * The search can be done by category or name of a product
+ */
 
 const TitleAndToolbar = () => {
     const navigate = useNavigate();

@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLogin } from '../ProductContext';
 import { Button, Typography, TextField, Box } from '@mui/material'
 import '../Styles/Login.css'
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setError] = useState('');
 
+/**
+ * The login page 
+ * Contains a username, password, and 
+ * @returns 
+ */
+const Login = () => {
+    // import from the context
+    const {
+        username, setUsername, 
+        password, setPassword, 
+        errorMessage, setError
+    } = useLogin();
+
+    // Check the validation using already set username and password
+    // store in local storage
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === 'admin' && password === 'adminPW') {

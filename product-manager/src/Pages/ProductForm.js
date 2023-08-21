@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useForm, useProducts, useValidation } from '../ProductContext';
+import { useForm, useProducts } from '../ProductContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import DragAndDrop from '../Components/DragAndDrop';
 import {
@@ -8,17 +8,20 @@ import {
 } from '@mui/material'
 import '../Styles/ProductForm.css'
 
+/**
+ * Renders a product form to add or edit products
+ */
 const ProductForm = () => {
     const { id } = useParams();
-    const { name, setName, price, setPrice,
-        type, setType, image, setImage,
-        resetForm } = useForm();
-    const {nameError, setNameError,
-        priceError, setPriceError,
-        imageError, setImageError} = useValidation();
+    // import form states and product states from context
+    const { name, setName, nameError, setNameError,
+        price, setPrice, priceError, setPriceError,
+        image, setImage, imageError, setImageError,
+        type, setType, resetForm } = useForm();
     const { products, setProducts, addProduct } = useProducts();
     const navigate = useNavigate();
 
+    // useEffect to keep the products updated
     useEffect(() => {
         if (id) {
             const product = products.find(product => product.id === parseInt(id));
@@ -30,9 +33,11 @@ const ProductForm = () => {
             }
         }
         else resetForm()
-    }, [id, products]);
+    }, [id, products, resetForm, setImage,
+        setName, setPrice, setType]);
 
     const handleSubmit = (e) => {
+        // implement validation
         e.preventDefault();
         if (!name) {
             setNameError('Name is Required');
@@ -46,17 +51,18 @@ const ProductForm = () => {
             setImageError('Please insert an image');
             return;
         }
-            
+        // Updated the edited products
         if (id) {
             const editedProducts = products.map(product => {
-                console.log(image)
-                return product.id === parseInt(id) 
-                ? {...product, name, price, type, image} 
-                : product;
+                return product.id === parseInt(id)
+                    ? { ...product, name, price, type, image }
+                    : product;
             })
             setProducts(editedProducts);
         }
+        // Otherwise add a new product
         else addProduct(name, price, type, image);
+        // Navigate to the product list when done
         navigate('/products');
     }
     return (
@@ -77,11 +83,10 @@ const ProductForm = () => {
                         value={name}
                         onChange={e => setName(e.target.value)}
                         placeholder='Enter product name'
-                        autoWidth
                         autoFocus
                         required
                         error={nameError !== ''}
-                        helperText={nameError} 
+                        helperText={nameError}
                     />
                 </FormControl>
                 <FormControl>
@@ -92,11 +97,10 @@ const ProductForm = () => {
                         type='number'
                         onChange={e => setPrice(e.target.value)}
                         placeholder='Enter product price'
-                        autoWidth
                         required
                         InputProps={{ startAdornment: '$' }}
                         error={priceError !== ''}
-                        helperText={priceError} 
+                        helperText={priceError}
                     />
 
                 </FormControl>
@@ -105,9 +109,7 @@ const ProductForm = () => {
                     <Select
                         value={type}
                         onChange={e => setType(e.target.value)}
-                        autoWidth
-                        label='Category'
-                    >
+                        label='Category' >
                         <MenuItem value={'Digital Art'}>
                             Digital Art
                         </MenuItem>
@@ -119,8 +121,12 @@ const ProductForm = () => {
                         </MenuItem>
                     </Select>
                 </FormControl>
-                <DragAndDrop image={image} setImage={setImage} name={name} imageError={imageError} />
-                <Button 
+                <DragAndDrop
+                    image={image}
+                    setImage={setImage}
+                    name={name}
+                    imageError={imageError} />
+                <Button
                     type='submit'
                     variant='contained'
                     className='product-form--submit'

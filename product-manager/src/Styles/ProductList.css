@@ -66,8 +66,9 @@
     margin: 0 0.1rem 0.3rem;
 }
 
-.product-list--label:hover+.product-list--table-sort,
-.product-list--table-sort:hover {
+.product-list--label:hover + .product-list--table-sort,
+.product-list--table-sort:hover
+,.product-list--table-sort.Mui-active {
     opacity: 1;
 }
 

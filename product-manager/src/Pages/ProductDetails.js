@@ -7,8 +7,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import '../Styles/ProductDetails.css'
 
+/**
+ * Renders a product details component
+ * Shows the product name, price, category and image
+ * Image can be clicked to show a bigger modal
+ */
 const ProductDetails = () => {
-    const [product, setProduct] = useState(null);
+    const [ product, setProduct ] = useState(null);
     const { products } = useProducts();
     const { id } = useParams();
     const { setIsModalOpen} = useImageModal();

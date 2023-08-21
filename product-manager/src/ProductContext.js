@@ -10,6 +10,11 @@ const ProductProvider = ({ children }) => {
     // Search states
     const [search, setSearch] = useState('');
 
+    // Login States
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setError] = useState('');
+
     // Pagination states
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -59,6 +64,9 @@ const ProductProvider = ({ children }) => {
 
     return (
         <ProductContext.Provider value={{
+            username, setUsername,
+            password, setPassword,
+            errorMessage, setError,
             products, setProducts,
             addProduct,
             deleteProduct,
@@ -85,7 +93,7 @@ const usePagination = () => useContext(ProductContext);
 const useSearch = () => useContext(ProductContext);
 const useImageModal = () => useContext(ProductContext);
 const useForm = () => useContext(ProductContext);
-const useValidation = () => useContext(ProductContext);
+const useLogin = () => useContext(ProductContext);
 
 export {
     ProductContext,
@@ -95,5 +103,5 @@ export {
     useSearch,
     useImageModal,
     useForm,
-    useValidation
+    useLogin
 }
