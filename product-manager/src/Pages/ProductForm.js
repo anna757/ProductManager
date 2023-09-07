@@ -33,8 +33,7 @@ const ProductForm = () => {
             }
         }
         else resetForm()
-    }, [id, products, resetForm, setImage,
-        setName, setPrice, setType]);
+    }, [id, products]);
 
     const handleSubmit = (e) => {
         // implement validation
@@ -54,10 +53,12 @@ const ProductForm = () => {
         // Updated the edited products
         if (id) {
             const editedProducts = products.map(product => {
+                console.log(product);
                 return product.id === parseInt(id)
                     ? { ...product, name, price, type, image }
                     : product;
             })
+            console.log(products);
             setProducts(editedProducts);
         }
         // Otherwise add a new product

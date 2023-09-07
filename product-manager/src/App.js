@@ -5,6 +5,7 @@ import ProductForm from './Pages/ProductForm'
 import ProductList from './Pages/ProductList'
 import { ProductProvider } from './ProductContext';
 import { StyledEngineProvider as StyleProvider } from '@mui/material/styles';
+import PreviewButton from './Components/PreviewButton'
 
 /**
  * Renders a product manager 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <StyleProvider injectFirst>
       <ProductProvider>
+        <PreviewButton />
         <Router>
           <Routes>
             <Route path='/' element={<Login />} />

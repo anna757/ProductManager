@@ -13,14 +13,17 @@ body::-webkit-scrollbar {
   width: 7px;
   background-color: #F5F5F5;
 }
+
 body::-webkit-scrollbar-thumb {
   background-color: rgba(119, 119, 119, 0.6);
   border-radius: 20px;
   transition: background-color 0.3s ease;
 }
+
 body::-webkit-scrollbar-thumb:hover {
   background-color: rgba(85, 85, 85, 0.8); 
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -41,4 +44,11 @@ body {
   --button-view--hover: #218838;
   --button-edit: #007bff;
   --button-edit--hover: #0056b3;
+}
+
+.preview-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }

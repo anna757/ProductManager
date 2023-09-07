@@ -12,9 +12,10 @@ import SearchIcon from '@mui/icons-material/Search';
  * The search can be done by category or name of a product
  */
 
-const TitleAndToolbar = () => {
+const TitleAndToolbar = ({title}) => {
     const navigate = useNavigate();
     const { search, setSearch } = useSearch();
+    const { isPreviewMode } = useSearch();
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
     }
@@ -24,7 +25,7 @@ const TitleAndToolbar = () => {
             <Typography
                 variant='h3'
                 className='product-list--title'>
-                Your Products
+                {title}
             </Typography>
             <Box className='product-list--toolbar'>
                 <TextField
@@ -42,12 +43,14 @@ const TitleAndToolbar = () => {
                         ),
                     }}
                 />
+                {!isPreviewMode ?
                 <Button
                     onClick={() => navigate(`/products/add`)}
                     className='product-list--add'
                     startIcon={<AddIcon />} >
                     Add Product
                 </Button>
+                : <></>}
             </Box>
         </>
     )

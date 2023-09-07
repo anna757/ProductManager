@@ -1,4 +1,18 @@
 /*Container should be a flex container with column direction*/
+.product-list-preview {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 80%;
+    margin-top: 2rem;
+}
+
+.product-list-preview-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .product-list {
     display: flex;
     flex-direction: column;
@@ -132,9 +146,7 @@
     .product-list--add,
     .product-list--edit  {
         font-size: xx-small;
-
         padding: 4px;
-
     }
     .product-list--icon {
         font-size: 0.7rem;

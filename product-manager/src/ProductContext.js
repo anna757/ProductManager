@@ -23,6 +23,12 @@ const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState(productList);
     const [idCounter, setIdCounter] = useState(products.length + 1);
 
+    // Preview Mode State
+    const [isPreviewMode, setIsPreviewMode] = useState(false);
+    // Toggle
+    const togglePreviewMode = () => setIsPreviewMode(!isPreviewMode);
+
+
     // Product Form States
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -66,6 +72,8 @@ const ProductProvider = ({ children }) => {
         <ProductContext.Provider value={{
             username, setUsername,
             password, setPassword,
+            isPreviewMode, setIsPreviewMode,
+            togglePreviewMode,
             errorMessage, setError,
             products, setProducts,
             addProduct,

@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useProducts, useSearch, usePagination } from '../ProductContext';
 import ProductListPagination from '../Components/ProductListPagination';
+
 // Custom Components
 import TitleAndToolbar from '../Components/TitileAndToolbar';
 import EnhancedTableHead from '../Components/EnhancedTableHead';
+
 // MUI and MUI Icon imports
 import {
     Box, Table, TableBody, TableCell, TableRow,
-    Paper, Avatar, TableContainer, IconButton
+    Paper, Avatar, TableContainer, IconButton, ImageList,
+    Card, CardMedia, CardContent, Typography, ImageListItem,
+    Button, CardActions
 } from '@mui/material'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -34,7 +38,7 @@ const columns = [
 
 // The product list component
 const ProductList = () => {
-    const { products, deleteProduct } = useProducts();
+    const { products, deleteProduct, isPreviewMode } = useProducts();
     const { page, rowsPerPage } = usePagination();
     const { search } = useSearch();
     const navigate = useNavigate();
@@ -46,74 +50,128 @@ const ProductList = () => {
     );
 
     return (
-        <Box component='div' className='product-list'>
-            {/* Title and toolbar component */}
-            <TitleAndToolbar />
-            <Paper elevation={3} className='product-list--table'>
-                <TableContainer className='product-list--tcontainer'>
-                    <Table>
-                        {/* Enhanced Table head component */}
-                        <EnhancedTableHead
-                            columns={columns}
-                            products={filteredProducts}></EnhancedTableHead>
-                        <TableBody sx={{ p: 15, width: '100%' }}>
-                            {filteredProducts
-                                .slice(page * rowsPerPage, 
-                                    page * rowsPerPage + rowsPerPage)
-                                .map((product) => {
-                                    return (
-                                        <TableRow hover key={product.id}>
-                                            <TableCell>
-                                                {product.name}
-                                            </TableCell>
-                                            <TableCell>
-                                                ${product.price}
-                                            </TableCell>
-                                            <TableCell>
-                                                {product.type}
-                                            </TableCell>
-                                            <TableCell>
-                                                <Avatar
-                                                    variant='rounded'
-                                                    alt={product.alt}
-                                                    src={product.image}
-                                                    className='product-list--image'
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <IconButton
-                                                    size='small'
-                                                    sx={{ mr: 1 }}
-                                                    className='product-list--view'
-                                                    aria-label='open'
-                                                    onClick={() => navigate(`/products/${product.id}`)}>
-                                                    <OpenInNewIcon className='product-list--icon' />
-                                                </IconButton>
-                                                <IconButton
-                                                    size='small'
-                                                    sx={{ mr: 1 }}
-                                                    onClick={() => navigate(`/products/${product.id}/edit`)}
-                                                    className='product-list--edit'
-                                                    aria-label='edit'>
-                                                    <EditIcon className='product-list--icon' />
-                                                </IconButton>
-                                                <IconButton
-                                                    size='small'
-                                                    onClick={() => deleteProduct(product.id)}
-                                                    className='product-list--delete'
-                                                    aria-label='delete'>
-                                                    <DeleteIcon className='product-list--icon' />
-                                                </IconButton>
-                                            </TableCell>
-                                        </TableRow>
-                                    )
-                                })}
-                        </TableBody>
-                    </Table>
-                    <ProductListPagination products={filteredProducts} />
-                </TableContainer>
-            </Paper>
-        </Box>
+        isPreviewMode ? (
+            <Box component='div' className='product-list-preview'>
+                < TitleAndToolbar />
+                <ImageList variant='masonry'
+                    sx={{
+                        columnCount: {
+                            xs: '1 !important',
+                            sm: '2 !important',
+                            md: '3 !important',
+                            lg: '4 !important',
+                            xl: '5 !important',
+                        }
+                    }}
+                    gap={8}>
+                    {filteredProducts.map((product) => {
+                        return (
+                            <ImageListItem key={product.id}>
+                                <Card className='product-list-preview-card'>
+                                    <CardMedia
+                                        component='img'
+                                        alt={product.alt}
+                                        image={product.image}
+                                    />
+                                    <CardContent>
+                                        <Typography variant='h5'>
+                                            {product.name}
+                                        </Typography>
+                                        <Typography variant='h6'>
+                                            {product.type}
+                                        </Typography>
+                                        <Typography variant='h6'>
+                                            ${product.price}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button
+                                            variant='contained'
+                                            size="small">View
+                                        </Button>
+                                        <Button
+                                            variant='contained'
+                                            size="small">Add to Cart
+                                        </Button>
+                                    </CardActions>
+
+                                </Card>
+                            </ImageListItem>
+                        )
+                    })}
+                </ImageList>
+            </Box>
+        ) : (
+            <Box component='div' className='product-list'>
+                {/* Title and toolbar component */}
+                < TitleAndToolbar title='Your Products'/>
+                <Paper elevation={3} className='product-list--table'>
+                    <TableContainer className='product-list--tcontainer'>
+                        <Table>
+                            {/* Enhanced Table head component */}
+                            <EnhancedTableHead
+                                columns={columns}
+                                products={filteredProducts}>
+                            </EnhancedTableHead>
+                            <TableBody sx={{ p: 15, width: '100%' }}>
+                                {filteredProducts
+                                    .slice(page * rowsPerPage,
+                                        page * rowsPerPage + rowsPerPage)
+                                    .map((product) => {
+                                        return (
+                                            <TableRow hover key={product.id}>
+                                                <TableCell>
+                                                    {product.name}
+                                                </TableCell>
+                                                <TableCell>
+                                                    ${product.price}
+                                                </TableCell>
+                                                <TableCell>
+                                                    {product.type}
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Avatar
+                                                        variant='rounded'
+                                                        alt={product.alt}
+                                                        src={product.image}
+                                                        className='product-list--image'
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <IconButton
+                                                        size='small'
+                                                        sx={{ mr: 1 }}
+                                                        className='product-list--view'
+                                                        aria-label='open'
+                                                        onClick={() => navigate(`/products/${product.id}`)}>
+                                                        <OpenInNewIcon className='product-list--icon' />
+                                                    </IconButton>
+                                                    <IconButton
+                                                        size='small'
+                                                        sx={{ mr: 1 }}
+                                                        onClick={() => navigate(`/products/${product.id}/edit`)}
+                                                        className='product-list--edit'
+                                                        aria-label='edit'>
+                                                        <EditIcon className='product-list--icon' />
+                                                    </IconButton>
+                                                    <IconButton
+                                                        size='small'
+                                                        onClick={() => deleteProduct(product.id)}
+                                                        className='product-list--delete'
+                                                        aria-label='delete'>
+                                                        <DeleteIcon className='product-list--icon' />
+                                                    </IconButton>
+                                                </TableCell>
+                                            </TableRow>
+                                        )
+                                    })}
+                            </TableBody>
+                        </Table>
+                        <ProductListPagination products={filteredProducts} />
+                    </TableContainer>
+                </Paper>
+            </Box >
+        )
     );
 }
 
