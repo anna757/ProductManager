@@ -766,5 +766,45 @@
         "price": 50,
         "image": "/images/realisticPhotos/elf.jpg",
         "alt": "Elf - Realistic Photos"
+    },
+    {
+        "id": 97,
+        "name": "Clouds",
+        "type": "Realistic Photos",
+        "price": 50,
+        "image": "/images/realisticPhotos/clouds.jpg",
+        "alt": "Clouds - Realistic Photos"
+    },
+    {
+        "id": 98,
+        "name": "Flower",
+        "type": "Realistic Photos",
+        "price": 50,
+        "image": "/images/realisticPhotos/flower.jpg",
+        "alt": "Flower - Realistic Photos"
+    },
+    {
+        "id": 99,
+        "name": "Purple World",
+        "type": "Digital Art",
+        "price": 25,
+        "image": "/images/digitalArt/purpleWorld.png",
+        "alt": "Purple World - Digital Art"
+    },
+    {
+        "id": 100,
+        "name": "Sunset Mountains",
+        "type": "Digital Art",
+        "price": 25,
+        "image": "/images/digitalArt/sunsetMountains.jpg",
+        "alt": "Sunset Mountains - Digital Art"
+    },
+    {
+        "id": 101,
+        "name": "Curly Woman",
+        "type": "Digital Art",
+        "price": 25,
+        "image": "/images/digitalArt/curlyWoman.jpg",
+        "alt": "Curly Woman - Digital Art"
     }
 ]

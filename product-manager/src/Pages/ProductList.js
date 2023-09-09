@@ -11,7 +11,7 @@ import {
     Box, Table, TableBody, TableCell, TableRow,
     Paper, Avatar, TableContainer, IconButton, ImageList,
     Card, CardMedia, CardContent, Typography, ImageListItem,
-    Button, CardActions
+    Button, CardActions, Select, MenuItem
 } from '@mui/material'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -38,16 +38,18 @@ const columns = [
 
 // The product list component
 const ProductList = () => {
-    const { products, deleteProduct, isPreviewMode } = useProducts();
+    const { products, deleteProduct, isPreviewMode,category} = useProducts();
     const { page, rowsPerPage } = usePagination();
     const { search } = useSearch();
     const navigate = useNavigate();
 
     // Filtered products for the search function
     const filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(search.toLowerCase())
-        || product.type.toLowerCase().includes(search.toLowerCase())
+        (category === 'All' || product.type === category) &&
+        (product.name.toLowerCase().includes(search.toLowerCase())
+        || product.type.toLowerCase().includes(search.toLowerCase()))
     );
+
 
     return (
         isPreviewMode ? (
@@ -69,9 +71,11 @@ const ProductList = () => {
                             <ImageListItem key={product.id}>
                                 <Card className='product-list-preview-card'>
                                     <CardMedia
+                                        sx={{ cursor:'pointer' }}
                                         component='img'
                                         alt={product.alt}
                                         image={product.image}
+                                        onClick={() => navigate(`/products/${product.id}`)}
                                     />
                                     <CardContent>
                                         <Typography variant='h5'>
@@ -84,14 +88,17 @@ const ProductList = () => {
                                             ${product.price}
                                         </Typography>
                                     </CardContent>
-                                    <CardActions>
+                                    <CardActions className='product-list-preview-actions'>
                                         <Button
                                             variant='contained'
-                                            size="small">View
+                                            size="small"
+                                            onClick={() => navigate(`/products/${product.id}`)}>
+                                                View Details
                                         </Button>
                                         <Button
                                             variant='contained'
-                                            size="small">Add to Cart
+                                            size="small">
+                                                Add to Cart
                                         </Button>
                                     </CardActions>
 

@@ -28,6 +28,8 @@ const ProductProvider = ({ children }) => {
     // Toggle
     const togglePreviewMode = () => setIsPreviewMode(!isPreviewMode);
 
+    // Categories for prduct list page
+    const [category, setCategory] = useState('All');
 
     // Product Form States
     const [name, setName] = useState('');
@@ -76,6 +78,7 @@ const ProductProvider = ({ children }) => {
             togglePreviewMode,
             errorMessage, setError,
             products, setProducts,
+            category, setCategory,
             addProduct,
             deleteProduct,
             page, setPage,

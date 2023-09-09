@@ -1,6 +1,9 @@
-import { useSearch } from '../ProductContext';
+import { useSearch, useProducts } from '../ProductContext';
 import { useNavigate } from 'react-router-dom'
-import { Typography, Button, Box, TextField, InputAdornment } from '@mui/material'
+import {
+    Typography, Button, Box,
+    TextField, InputAdornment, Select, MenuItem
+} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -12,13 +15,17 @@ import SearchIcon from '@mui/icons-material/Search';
  * The search can be done by category or name of a product
  */
 
-const TitleAndToolbar = ({title}) => {
+const TitleAndToolbar = ({ title }) => {
     const navigate = useNavigate();
     const { search, setSearch } = useSearch();
-    const { isPreviewMode } = useSearch();
+    const { products, isPreviewMode, category, setCategory } = useProducts();
+
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
     }
+
+    const categories = ['All', ...new Set(products.map(product => product.type))];
+
 
     return (
         <>
@@ -41,17 +48,36 @@ const TitleAndToolbar = ({title}) => {
                                 <SearchIcon />
                             </InputAdornment>
                         ),
+                        endAdornment: (
+                            <InputAdornment position='end'>
+                                <Select
+                                    className='category-select'
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                    displayEmpty
+                                    sx={{textAlign: 'center'}}
+                                >
+                                    {categories.map((cat) => (
+                                        <MenuItem key={cat} value={cat}>{cat}</MenuItem>
+                                    ))}
+                                </Select>
+                            </InputAdornment>
+                        ),
+                        style: { paddingRight: 0 } 
                     }}
                 />
-                {!isPreviewMode ?
-                <Button
-                    onClick={() => navigate(`/products/add`)}
-                    className='product-list--add'
-                    startIcon={<AddIcon />} >
-                    Add Product
-                </Button>
-                : <></>}
+                {!isPreviewMode ? (
+                    <Button
+                        onClick={() => navigate(`/products/add`)}
+                        className='product-list--add'
+                        startIcon={<AddIcon />} >
+                        Add Product
+                    </Button>
+                ) : (
+                    <></>
+                )}
             </Box>
+
         </>
     )
 }

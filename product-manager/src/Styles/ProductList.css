@@ -13,6 +13,13 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.product-list-preview-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .product-list {
     display: flex;
     flex-direction: column;
@@ -30,7 +37,14 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center; 
 }
+
+.category-select {
+    width: 10rem;
+    padding: 0;
+}
+
 
 /* Search Bar Styles */
 .MuiOutlinedInput-input {
