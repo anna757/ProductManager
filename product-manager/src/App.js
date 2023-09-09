@@ -16,9 +16,9 @@ import PreviewButton from './Components/PreviewButton'
 const App = () => {
   return (
     <StyleProvider injectFirst>
-      <ProductProvider>
-        <PreviewButton />
-        <Router>
+      <Router>
+        <ProductProvider>
+          <PreviewButton />
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/home' element={<HomePage />} />
@@ -27,8 +27,8 @@ const App = () => {
             <Route path='/products/:id/edit' element={<ProductForm />} />
             <Route path='/products/:id' element={<ProductDetails />} />
           </Routes>
-        </Router>
-      </ProductProvider>
+        </ProductProvider>
+      </Router>
     </StyleProvider>
 
   );

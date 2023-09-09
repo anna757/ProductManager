@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-    Box, Typography, Button, Grid,
-    Paper, Card, CardActionArea, CardMedia,
+    Box, Typography, Grid,
+    Card, CardActionArea, CardMedia, Button,
     CardContent, TextField, InputAdornment, IconButton
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,21 +12,28 @@ import '../Styles/HomePage.css';
 
 const heroID = 100;
 const categoriesConfig = [
-    { label: "Realistic Images", id: 84, text: 'High-quality realistic images' },
+    { label: "Realistic Photos", id: 84, text: 'High-quality realistic images' },
     { label: "Digital Art", id: 101, text: 'Stunning digital art collections' },
-    { label: "Patterns", id: 49, text: 'Unique pattern designs' }
+    { label: "Pattern", id: 49, text: 'Unique pattern designs' }
 ];
 
 const HomePage = () => {
-    const { products, search, setSearch } = useProducts();
+    const { products, search, setSearch, setCategory } = useProducts();
     const navigate = useNavigate();
 
     const heroProduct = products.find(product => product.id === heroID);
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        setCategory('All');
         navigate('/products')
     }
 
+    const handleCategoryClick = (type) => {
+        console.log(type)
+        setCategory(type);
+        setSearch('');
+        navigate('/products')
+    }
     return (
         <Box className='homepage-container'>
             {/* Hero Section */}
@@ -36,42 +43,54 @@ const HomePage = () => {
                         Welcome
                     </Typography>
                     <Typography variant='h4' className='hero-subtitle'>
-                        Explore our wide range of images
+                        Explore our wide range of AI generated art
                     </Typography>
-                    <form onSubmit={handleSearchSubmit}>
-                        <TextField
-                            className='search-container rounded-search'
-                            value={search}
+                    <Box className='search-or-explore'>
+                        <form onSubmit={handleSearchSubmit}>
+                            <TextField
+                                className='search-container rounded-search'
+                                value={search}
+                                variant='outlined'
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder='Search for images...'
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <IconButton
+                                                className='search-icon'
+                                                onClick={handleSearchSubmit}>
+                                                <SearchIcon />
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </form>
+                        <Box className='vertical-divider'/>
+                        <Button
                             variant='outlined'
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder='Search for images...'
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <IconButton
-                                            className='search-icon'
-                                            onClick={handleSearchSubmit}>
-                                            <SearchIcon />
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                    </form>
+                            className='hero-button'
+                            onClick={() => handleCategoryClick('All')}>
+                            Explore All
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
 
             {/* Categories Section */}
             <Box component='div' className='category-section'>
-                <Typography variant='h4' gutterBottom>
-                    Categories
+                <Typography variant='h4' gutterBottom sx={{ pb: 2, pt: 0 }}>
+                    Explore by Category
                 </Typography>
                 <Grid container spacing={4}>
                     {categoriesConfig.map(category => {
                         const product = products.find(p => p.id === category.id) || {};
                         return (
                             <Grid item key={category.label} xs={12} sm={6} md={4}>
-                                <Card elevation={3} variant="outlined">
+                                <Card
+                                    elevation={3}
+                                    variant="outlined"
+                                    onClick={() => handleCategoryClick(category.label)}>
                                     <CardActionArea>
                                         <CardMedia
                                             component='img'

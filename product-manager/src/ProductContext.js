@@ -1,9 +1,12 @@
 import { createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import productList from './data/products.json';
 
 const ProductContext = createContext()
 
 const ProductProvider = ({ children }) => {
+    const navigate = useNavigate();
+
     // Image Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,7 +29,11 @@ const ProductProvider = ({ children }) => {
     // Preview Mode State
     const [isPreviewMode, setIsPreviewMode] = useState(false);
     // Toggle
-    const togglePreviewMode = () => setIsPreviewMode(!isPreviewMode);
+    const togglePreviewMode = () => {
+        setIsPreviewMode(!isPreviewMode);
+        if(isPreviewMode) navigate('/products');
+        else navigate('/home');
+    }
 
     // Categories for prduct list page
     const [category, setCategory] = useState('All');

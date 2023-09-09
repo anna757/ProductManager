@@ -5,6 +5,7 @@
     margin: auto;
     max-width: 80%;
     margin-top: 2rem;
+    
 }
 
 .product-list-preview-card {
@@ -12,6 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    
 }
 
 .product-list-preview-actions {
@@ -41,7 +43,7 @@
 }
 
 .category-select {
-    width: 10rem;
+    max-width: 10rem;
     padding: 0;
 }
 

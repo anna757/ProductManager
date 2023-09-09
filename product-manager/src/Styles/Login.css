@@ -27,11 +27,11 @@
 }
 
 /* Styling the mui textfields borders*/
-.MuiInputBase-input {
+.login--input .MuiInputBase-input {
     border-bottom: 1px solid #ff9a71;
 }
 
-.MuiInputBase-input:focus {
+.login--input .MuiInputBase-input:focus {
     border-bottom: 1px solid #79b6f5;
 }
 

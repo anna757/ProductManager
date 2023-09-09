@@ -11,8 +11,7 @@ import {
     Box, Table, TableBody, TableCell, TableRow,
     Paper, Avatar, TableContainer, IconButton, ImageList,
     Card, CardMedia, CardContent, Typography, ImageListItem,
-    Button, CardActions, Select, MenuItem
-} from '@mui/material'
+    Button, CardActions } from '@mui/material'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -56,6 +55,7 @@ const ProductList = () => {
             <Box component='div' className='product-list-preview'>
                 < TitleAndToolbar />
                 <ImageList variant='masonry'
+                    direction='column'
                     sx={{
                         columnCount: {
                             xs: '1 !important',
