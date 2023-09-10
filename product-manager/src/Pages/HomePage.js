@@ -10,11 +10,11 @@ import { useProducts } from '../ProductContext';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/HomePage.css';
 
-const heroID = 100;
+const heroID = 14;
 const categoriesConfig = [
-    { label: "Realistic Photos", id: 84, text: 'High-quality realistic images' },
-    { label: "Digital Art", id: 101, text: 'Stunning digital art collections' },
-    { label: "Pattern", id: 49, text: 'Unique pattern designs' }
+    { label: "Realistic Photos", id: 21, text: 'High-quality realistic images' },
+    { label: "Digital Art", id: 1, text: 'Stunning digital art collections' },
+    { label: "Pattern", id: 9, text: 'Unique pattern designs' }
 ];
 
 const HomePage = () => {
@@ -95,7 +95,7 @@ const HomePage = () => {
                                         <CardMedia
                                             component='img'
                                             alt={product.alt || "Placeholder alt"}
-                                            height="250"
+                                            height="350"
                                             image={product.image || "Placeholder image URL"}
                                         />
                                         <CardContent>

@@ -7,7 +7,6 @@
         "image": "/images/digitalArt/curlyWoman.jpg",
         "alt": "Curly Woman - Digital Art"
     },
-
     {
         "id": 2,
         "name": "Colorful Kitten",
@@ -706,11 +705,11 @@
     },
     {
         "id": 89,
-        "name": "Picasso Cat",
+        "name": "Van Gogh Cat",
         "type": "Digital Art",
         "price": 25,
         "image": "/images/digitalArt/picassoCat.jpg",
-        "alt": "Picasso Cat - Digital Art"
+        "alt": "Van Gogh Cat - Digital Art"
     },
     {
         "id": 90,
@@ -807,5 +806,174 @@
         "price": 50,
         "image": "/images/realisticPhotos/crossCity.jpg",
         "alt": "Cross City - Realistic Photos"
+    },
+    {
+        "id": 102,
+        "name": "Beach",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/beach.jpg"
+    },
+    {
+        "id": 103,
+        "name": "Cozy Village",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/cozyVillage.png"
+    },
+    {
+        "id": 104,
+        "name": "Karate Class",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/karateClass.jpg"
+    },
+    {
+        "id": 105,
+        "name": "Landscape Fantasy",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/landscapeFantasy.jpg"
+    },
+    {
+        "id": 106,
+        "name": "Dragon Forest",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/dragonForest.jpg"
+    },
+    {
+        "id": 107,
+        "name": "Realistic Dog",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/RealisticDog.png"
+    },
+    {
+        "id": 108,
+        "name": "Robot Guitar",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/robotGuitar.png"
+    },
+    {
+        "id": 109,
+        "name": "Ship Thunder",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/shipThunder.png"
+    },
+    {
+        "id": 110,
+        "name": "Bottle Sea",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/bottleSea.jpg"
+    },
+    {
+        "id": 111,
+        "name": "Car Castle",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/carCastle.jpg"
+    },
+    {
+        "id": 112,
+        "name": "Curly Woman Realistic",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/curlyWomanRealistic.jpg"
+    },
+    {
+        "id": 113,
+        "name": "Dogs",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/dogs.png"
+    },
+    {
+        "id": 114,
+        "name": "Future Art",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/futureArt.png"
+    },
+    {
+        "id": 115,
+        "name": "Gold Bird",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/goldBird.png"
+    },
+    {
+        "id": 116,
+        "name": "Hammerhead Shark",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/hammerheadShark.jpg"
+    },
+    {
+        "id": 117,
+        "name": "Jellyfish",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/jellyfish.png"
+    },
+    {
+        "id": 118,
+        "name": "Realistic Cabin",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/RealisticCabin.png"
+    },
+    {
+        "id": 119,
+        "name": "Realistic Hotel",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/RealisticHotel.png"
+    },
+    {
+        "id": 120,
+        "name": "Red Birds",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/redBirds.png"
+    },
+    {
+        "id": 121,
+        "name": "Waterfall",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/waterfall.png"
+    },
+    {
+        "id": 122,
+        "name": "Wild West Cowgirl",
+        "price": 50,
+        "type": "Realistic Photos",
+        "image": "/images/realisticPhotos/wildWestCowgirl.jpg"
+    },
+    {
+        "id": 123,
+        "name": "Chess",
+        "price": 25,
+        "type": "Digital Art",
+        "image": "/images/digitalArt/chess.png"
+    },
+    {
+        "id": 124,
+        "name": "Colorful Pattern",
+        "price": 10,
+        "type": "Pattern",
+        "image": "/images/patterns/ColorfulPattern.png"
+    },
+    {
+        "id": 125,
+        "name": "Colorful Flower Pattern",
+        "price": 10,
+        "type": "Pattern",
+        "image": "/images/patterns/colorfulFlowerPattern.png"
     }
 ]
+    

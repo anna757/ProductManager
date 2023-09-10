@@ -58,7 +58,6 @@ const ProductForm = () => {
                     ? { ...product, name, price, type, image }
                     : product;
             })
-            console.log(products);
             setProducts(editedProducts);
         }
         // Otherwise add a new product

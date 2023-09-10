@@ -11,7 +11,7 @@ import '../Styles/ProductForm.css'
 const DragAndDrop = ({ image, setImage, name, imageError }) => {
     const { getRootProps, getInputProps, isFocused, isDragAccept,
         isDragReject, open } = useDropzone({
-            accept: {'image/*': []},
+            accept: { 'image/*': [] },
             maxFiles: 1,
             onDrop: (acceptedImage) => {
                 setImage(URL.createObjectURL(acceptedImage[0]));
@@ -38,6 +38,7 @@ const DragAndDrop = ({ image, setImage, name, imageError }) => {
                 <Box
                     className='product-form--image-container'
                     {...getRootProps()} >
+                    <input {...getInputProps()} />
                     <Avatar
                         className='product-form--image'
                         variant='rounded'
@@ -63,8 +64,8 @@ const DragAndDrop = ({ image, setImage, name, imageError }) => {
                     </Box>
                     { /* Display error if attempting to submit without an image */
                         imageError
-                        ? <Typography color='error'>{imageError}</Typography>
-                        : ''}
+                            ? <Typography color='error'>{imageError}</Typography>
+                            : ''}
                 </>
             )}
         </FormControl>
