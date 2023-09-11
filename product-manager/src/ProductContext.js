@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import productList from './data/products.json';
 
@@ -17,6 +17,9 @@ const ProductProvider = ({ children }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        return localStorage.getItem('isLoggedIn') === 'true';
+    });
 
     // Pagination states
     const [page, setPage] = useState(0);
@@ -76,6 +79,12 @@ const ProductProvider = ({ children }) => {
         setProducts(newProducts);
     }
 
+    // Login Check
+    useEffect(() => {
+        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+        if (!isLoggedIn) navigate('/');
+    }, [isLoggedIn])
+    
 
     return (
         <ProductContext.Provider value={{
@@ -99,6 +108,7 @@ const ProductProvider = ({ children }) => {
             nameError, setNameError,
             priceError, setPriceError,
             imageError, setImageError,
+            isLoggedIn, setIsLoggedIn,
             resetForm
         }}>
             {children}

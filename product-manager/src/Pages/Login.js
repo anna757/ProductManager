@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLogin } from '../ProductContext';
 import { Button, Typography, TextField, Box } from '@mui/material'
 import '../Styles/Login.css'
@@ -13,16 +14,19 @@ const Login = () => {
     const {
         username, setUsername, 
         password, setPassword, 
-        errorMessage, setError
+        errorMessage, setError,
+        setIsLoggedIn
     } = useLogin();
+
+    const navigate = useNavigate();
 
     // Check the validation using already set username and password
     // store in local storage
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === 'admin' && password === 'adminPW') {
-            localStorage.setItem('isLoggedIn', 'true');
-            window.location.href = '/products';
+            setIsLoggedIn(true);
+            navigate('/products');
         }
         else {
             setError('Wrong username or password!');

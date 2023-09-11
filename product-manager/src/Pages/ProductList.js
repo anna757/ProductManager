@@ -37,7 +37,8 @@ const columns = [
 
 // The product list component
 const ProductList = () => {
-    const { products, deleteProduct, isPreviewMode,category} = useProducts();
+    const { products, deleteProduct, 
+        isPreviewMode, category, resetForm} = useProducts();
     const { page, rowsPerPage } = usePagination();
     const { search } = useSearch();
     const navigate = useNavigate();
@@ -156,7 +157,10 @@ const ProductList = () => {
                                                     <IconButton
                                                         size='small'
                                                         sx={{ mr: 1 }}
-                                                        onClick={() => navigate(`/products/${product.id}/edit`)}
+                                                        onClick={() => {
+                                                            resetForm();
+                                                            navigate(`/products/${product.id}/edit`);
+                                                        }}
                                                         className='product-list--edit'
                                                         aria-label='edit'>
                                                         <EditIcon className='product-list--icon' />

@@ -32,7 +32,7 @@ const ProductForm = () => {
                 setImage(product.image);
             }
         }
-        else resetForm()
+        else resetForm();
     }, [id, products]);
 
     const handleSubmit = (e) => {
