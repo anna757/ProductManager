@@ -2,9 +2,9 @@
 .product-list-preview {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: auto;
     max-width: 80%;
-    margin-top: 2rem;
     
 }
 
@@ -13,13 +13,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border-radius: 5px;
+    padding: 2rem;
     
 }
 
 .product-list-preview-actions {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+
+.product-list--preview-button {
+    width: 60%;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 5px;
+    color: #fff;
 }
 
 .product-list {
@@ -96,7 +108,6 @@
     margin: 0 0.1rem 0.3rem;
 }
 
-.product-list--label:hover + .product-list--table-sort,
 .product-list--table-sort:hover
 ,.product-list--table-sort.Mui-active {
     opacity: 1;

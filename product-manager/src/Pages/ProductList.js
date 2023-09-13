@@ -11,10 +11,12 @@ import {
     Box, Table, TableBody, TableCell, TableRow,
     Paper, Avatar, TableContainer, IconButton, ImageList,
     Card, CardMedia, CardContent, Typography, ImageListItem,
-    Button, CardActions } from '@mui/material'
+    Button, CardActions
+} from '@mui/material'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 // Styles
 import '../Styles/ProductList.css'
 
@@ -37,8 +39,8 @@ const columns = [
 
 // The product list component
 const ProductList = () => {
-    const { products, deleteProduct, 
-        isPreviewMode, category, resetForm} = useProducts();
+    const { products, deleteProduct,
+        isPreviewMode, category, resetForm } = useProducts();
     const { page, rowsPerPage } = usePagination();
     const { search } = useSearch();
     const navigate = useNavigate();
@@ -47,7 +49,7 @@ const ProductList = () => {
     const filteredProducts = products.filter(product =>
         (category === 'All' || product.type === category) &&
         (product.name.toLowerCase().includes(search.toLowerCase())
-        || product.type.toLowerCase().includes(search.toLowerCase()))
+            || product.type.toLowerCase().includes(search.toLowerCase()))
     );
 
 
@@ -72,7 +74,7 @@ const ProductList = () => {
                             <ImageListItem key={product.id}>
                                 <Card className='product-list-preview-card'>
                                     <CardMedia
-                                        sx={{ cursor:'pointer' }}
+                                        sx={{ cursor: 'pointer' }}
                                         component='img'
                                         alt={product.alt}
                                         image={product.image}
@@ -91,15 +93,18 @@ const ProductList = () => {
                                     </CardContent>
                                     <CardActions className='product-list-preview-actions'>
                                         <Button
+                                            className='product-list--preview-button'
                                             variant='contained'
-                                            size="small"
-                                            onClick={() => navigate(`/products/${product.id}`)}>
-                                                View Details
+                                            color='success'
+                                            onClick={() => navigate(`/products/${product.id}`)}
+                                            ><OpenInNewIcon sx={{pr: 1}}/>
+                                            View Details
                                         </Button>
                                         <Button
+                                            className='product-list--preview-button'
                                             variant='contained'
-                                            size="small">
-                                                Add to Cart
+                                        ><AddShoppingCartIcon sx={{pr: 1}}/>
+                                            Add to Cart
                                         </Button>
                                     </CardActions>
 
@@ -112,7 +117,7 @@ const ProductList = () => {
         ) : (
             <Box component='div' className='product-list'>
                 {/* Title and toolbar component */}
-                < TitleAndToolbar title='Your Products'/>
+                < TitleAndToolbar title='Your Products' />
                 <Paper elevation={3} className='product-list--table'>
                     <TableContainer className='product-list--tcontainer'>
                         <Table>

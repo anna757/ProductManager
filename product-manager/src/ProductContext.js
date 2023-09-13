@@ -18,7 +18,7 @@ const ProductProvider = ({ children }) => {
     const [password, setPassword] = useState('');
     const [errorMessage, setError] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        return localStorage.getItem('isLoggedIn') === 'true';
+        return localStorage.getItem('isLoggedIn') === 'false';
     });
 
     // Pagination states
