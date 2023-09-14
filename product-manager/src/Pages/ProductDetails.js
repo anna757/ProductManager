@@ -5,6 +5,7 @@ import ImageModal from '../Components/ImageModal';
 import { Typography, Container, Box, Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import '../Styles/ProductDetails.css'
 
 /**
@@ -13,10 +14,10 @@ import '../Styles/ProductDetails.css'
  * Image can be clicked to show a bigger modal
  */
 const ProductDetails = () => {
-    const [ product, setProduct ] = useState(null);
-    const { products } = useProducts();
+    const [product, setProduct] = useState(null);
+    const { products, isPreviewMode } = useProducts();
     const { id } = useParams();
-    const { setIsModalOpen} = useImageModal();
+    const { setIsModalOpen } = useImageModal();
 
     useEffect(() => {
         const product = products.find(product => product.id === parseInt(id))
@@ -35,9 +36,9 @@ const ProductDetails = () => {
                 component='img'
                 alt={product.alt}
                 src={product.image}
-                onClick={() => handleModalOpen()} 
+                onClick={() => handleModalOpen()}
             />
-            <ImageModal 
+            <ImageModal
                 alt={product.alt}
                 src={product.image}
             />
@@ -47,9 +48,19 @@ const ProductDetails = () => {
                     className='product-details--button'
                     component={Link}
                     aria-label='edit'
-                    to={`/products/${id}/edit`}>
-                    <EditIcon sx={{ mr: 1 }} />
-                    Edit Product Details
+                    to={!isPreviewMode ? `/products/${id}/edit` : ''}>
+
+                    {!isPreviewMode ? (
+                        <>
+                            <EditIcon sx={{ mr: 1 }} />
+                            Edit Product Details
+                        </>
+                    ) : (
+                        <>
+                            <AddShoppingCartIcon sx={{ mr: 1}} />
+                            Add product to cart
+                        </>
+                    )}
                 </Button>
                 <Button
                     id='product-details--back'

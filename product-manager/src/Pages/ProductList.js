@@ -74,7 +74,7 @@ const ProductList = () => {
                             <ImageListItem key={product.id}>
                                 <Card className='product-list-preview-card'>
                                     <CardMedia
-                                        sx={{ cursor: 'pointer' }}
+                                        sx={{ cursor: 'pointer', borderRadius: 1 }}
                                         component='img'
                                         alt={product.alt}
                                         image={product.image}
@@ -96,14 +96,18 @@ const ProductList = () => {
                                             className='product-list--preview-button'
                                             variant='contained'
                                             color='success'
+                                            size='small'
                                             onClick={() => navigate(`/products/${product.id}`)}
-                                            ><OpenInNewIcon sx={{pr: 1}}/>
+                                        >
+                                            <OpenInNewIcon sx={{ pr: 1 }} />
                                             View Details
                                         </Button>
                                         <Button
                                             className='product-list--preview-button'
                                             variant='contained'
-                                        ><AddShoppingCartIcon sx={{pr: 1}}/>
+                                            size='small'
+                                        >
+                                            <AddShoppingCartIcon sx={{ pr: 1 }} />
                                             Add to Cart
                                         </Button>
                                     </CardActions>

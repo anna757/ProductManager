@@ -39,7 +39,7 @@ const TitleAndToolbar = ({ title }) => {
                     className='search'
                     label='Search'
                     variant='outlined'
-                    placeholder='Search by name or category'
+                    placeholder='Search for a product'
                     value={search}
                     onChange={handleSearchChange}
                     InputProps={{

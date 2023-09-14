@@ -7,8 +7,9 @@ const ProductContext = createContext()
 const ProductProvider = ({ children }) => {
     const navigate = useNavigate();
 
-    // Image Modal
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // Product states
+    const [products, setProducts] = useState(productList);
+    const [idCounter, setIdCounter] = useState(products.length + 1);
 
     // Search states
     const [search, setSearch] = useState('');
@@ -21,25 +22,30 @@ const ProductProvider = ({ children }) => {
         return localStorage.getItem('isLoggedIn') === 'false';
     });
 
+    // Login Check
+    useEffect(() => {
+        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
+        if (!isLoggedIn) navigate('/');
+    }, [isLoggedIn])
+
+    // Categories for prduct list page
+    const [category, setCategory] = useState('All');
+
     // Pagination states
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-
-    // Product states
-    const [products, setProducts] = useState(productList);
-    const [idCounter, setIdCounter] = useState(products.length + 1);
 
     // Preview Mode State
     const [isPreviewMode, setIsPreviewMode] = useState(false);
     // Toggle
     const togglePreviewMode = () => {
         setIsPreviewMode(!isPreviewMode);
-        if(isPreviewMode) navigate('/products');
+        if (isPreviewMode) navigate('/products');
         else navigate('/home');
     }
 
-    // Categories for prduct list page
-    const [category, setCategory] = useState('All');
+    // Image Modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Product Form States
     const [name, setName] = useState('');
@@ -56,11 +62,11 @@ const ProductProvider = ({ children }) => {
         setPrice('');
         setType('Digital Art');
         setImage('');
-        setNameError(''); 
-        setPriceError(''); 
+        setNameError('');
+        setPriceError('');
         setImageError('');
     }
-    
+
     // Add and delete products
     const addProduct = (name, price, type, image) => {
         const newProduct = {
@@ -78,13 +84,6 @@ const ProductProvider = ({ children }) => {
         const newProducts = products.filter(product => product.id !== id);
         setProducts(newProducts);
     }
-
-    // Login Check
-    useEffect(() => {
-        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
-        if (!isLoggedIn) navigate('/');
-    }, [isLoggedIn])
-    
 
     return (
         <ProductContext.Provider value={{

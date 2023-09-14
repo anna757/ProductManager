@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-around;
     border-radius: 5px;
-    padding: 2rem;
+    padding: 1.5rem;
     
 }
 
@@ -25,13 +25,13 @@
 
 }
 
-
 .product-list--preview-button {
-    width: 60%;
+    max-width: 90%;
     text-decoration: none;
     padding: 8px 15px;
     margin: 5px;
     color: #fff;
+    font-weight: bold;
 }
 
 .product-list {
