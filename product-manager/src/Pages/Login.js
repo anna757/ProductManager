@@ -20,6 +20,11 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const resetLogin = () => {
+        setUsername('');
+        setPassword('');
+        setError('');
+    }
     // Check the validation using already set username and password
     // store in local storage
     const handleSubmit = (e) => {
@@ -27,6 +32,7 @@ const Login = () => {
         if (username === 'admin' && password === 'adminPW') {
             setIsLoggedIn(true);
             navigate('/products');
+            resetLogin();
         }
         else {
             setError('Wrong username or password!');

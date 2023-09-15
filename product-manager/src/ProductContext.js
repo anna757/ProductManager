@@ -19,14 +19,14 @@ const ProductProvider = ({ children }) => {
     const [password, setPassword] = useState('');
     const [errorMessage, setError] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        return localStorage.getItem('isLoggedIn') === 'false';
+        return localStorage.setItem('isLoggedIn', 'false');
     });
 
     // Login Check
     useEffect(() => {
-        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
-        if (!isLoggedIn) navigate('/');
-    }, [isLoggedIn])
+        localStorage.getItem('isLoggedIn');
+        if (isLoggedIn === false) navigate('/');
+    }, [isLoggedIn, navigate])
 
     // Categories for prduct list page
     const [category, setCategory] = useState('All');

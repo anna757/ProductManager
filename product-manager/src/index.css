@@ -52,7 +52,7 @@ body {
   right: 20px;
   z-index: 1000;
   color: black;
-  background-color: #f0f0f0;
+  background-color: #fad5d5da;
   font-weight: bold;
 }
 
@@ -62,9 +62,14 @@ body {
   left: 20px;
   z-index: 1000;
   color: black;
-  background-color: #f0f0f0;
+  background-color: #e6edffe6;
   font-weight: bold;
 }
-.preview-button:hover, .login-button:hover{
-  background-color: #cccccc;
+.preview-button:hover {
+  background-color: #cfddffe6;
+}
+
+.login-button:hover {
+  background-color: #fdb5b5da;
+
 }
