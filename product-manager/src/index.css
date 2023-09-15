@@ -46,9 +46,25 @@ body {
   --button-edit--hover: #0056b3;
 }
 
-.preview-button {
+.login-button {
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
+  color: black;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.preview-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  color: black;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+.preview-button:hover, .login-button:hover{
+  background-color: #cccccc;
 }

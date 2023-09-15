@@ -6,8 +6,7 @@ import ProductList from './Pages/ProductList'
 import HomePage from './Pages/HomePage'
 import { ProductProvider } from './ProductContext';
 import { StyledEngineProvider as StyleProvider } from '@mui/material/styles';
-import PreviewButton from './Components/PreviewButton'
-
+import Navbar from './Components/Navbar';
 /**
  * Renders a product manager 
  * Style provider to override default mui styles with css
@@ -18,7 +17,7 @@ const App = () => {
     <StyleProvider injectFirst>
       <Router>
         <ProductProvider>
-          <PreviewButton />
+          <Navbar />
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/home' element={<HomePage />} />
